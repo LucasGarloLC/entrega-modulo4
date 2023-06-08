@@ -1,43 +1,65 @@
 
 // Defines the constants for the task
-const addBtn = (document.getElementById("añadir") as HTMLInputElement)
-const substractBtn = (document.getElementById("restar") as HTMLInputElement);
-const resetBtn = (document.getElementById("reiniciar") as HTMLInputElement);
-const btn1 = (document.getElementById("number") as HTMLInputElement);
-const sendNumber = (document.getElementById("btn1") as HTMLButtonElement);
-const pCount = (document.getElementById("count") as HTMLInputElement);
+const addBtn = document.getElementById("añadir");
+const substractBtn = document.getElementById("restar");
+const resetBtn = document.getElementById("reiniciar");
+const btn1 = document.getElementById("number");
+const sendNumber = document.getElementById("btn1");
+const pCount = document.getElementById("count");
 
 let turno = 0;
 
 // Adds a number
 function add(){
-  if (addBtn !==null && addBtn !== undefined)
+  if (pCount !==null && pCount !== undefined && pCount instanceof HTMLParagraphElement){
   turno++
-  pCount.innerHTML = turno.toString().padStart(2, "0");
+  pCount.innerHTML = `${turno}`.padStart(2, "0");
+  } 
 }
 
 // Substracts a number
 function substract(){
-  if (substractBtn !==null && substractBtn !== undefined)
+  if (pCount !==null && pCount !== undefined && pCount instanceof HTMLParagraphElement) {
   turno--
-    pCount.innerHTML = turno.toString().padStart(2, "0");
+    pCount.innerHTML = `${turno}`.padStart(2, "0");
+  }
 }
 
 // Resets to value '0'
 function reset(){
-  if (resetBtn !==null && resetBtn !== undefined)
+  if (pCount !==null && pCount !== undefined && pCount instanceof HTMLParagraphElement) {
   turno = 0;
-  pCount.innerHTML = turno.toString().padStart(2, "0");
+  pCount.innerHTML = `${turno}`.padStart(2, "0");
+  }
 }
 
 // Adds a number typed manually within the dialog box
 function fun1() {
-  if (btn1 !==null && btn1 !== undefined)
-  pCount.innerHTML = btn1.value.padStart(2, "0")
+  if (pCount !==null && pCount !== undefined && pCount instanceof HTMLParagraphElement) {
+  pCount.innerHTML = getNumber().padStart(2, "0")
+  }
+}
+
+function getNumber() {
+  if (btn1 !==null && btn1 !== undefined && btn1 instanceof HTMLInputElement) {
+    return btn1.value;
+    }
+    return ""
 }
 
 // 'EventListeners used to call the functions to perform a pre-defined task
-addBtn.addEventListener("click", add)
-substractBtn.addEventListener("click", substract)
-resetBtn.addEventListener("click", reset)
-sendNumber.addEventListener("click", fun1)
+if (addBtn !==null && addBtn !== undefined && addBtn instanceof HTMLButtonElement){
+  addBtn.addEventListener("click", add);
+}
+
+if (substractBtn !==null && substractBtn !== undefined && substractBtn instanceof HTMLButtonElement) {
+  substractBtn.addEventListener("click", substract)
+}
+
+if (resetBtn !==null && resetBtn !== undefined && resetBtn instanceof HTMLButtonElement) {
+  resetBtn.addEventListener("click", reset)
+}
+
+if (sendNumber !==null && sendNumber !== undefined && sendNumber instanceof HTMLButtonElement) {
+  sendNumber.addEventListener("click", fun1)
+}
